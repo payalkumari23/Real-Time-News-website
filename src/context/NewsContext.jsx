@@ -39,11 +39,11 @@ const NewsContextProvider = ({ children }) => {
     },
   ];
 
-  const fetchNews = async (url = `/everything?q=india`) => {
+  const fetchNews = async (url = `/search?q=technology&lang=en&max=10`) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await api.get(`${url}&apiKey=${import.meta.env.VITE_API_KEY}`);
+      const response = await api.get(`${url}&apikey=${import.meta.env.VITE_API_KEY}`);
       const articles = response.data.articles;
       setNews(articles);
       return { articles, error: null };

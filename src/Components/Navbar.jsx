@@ -14,7 +14,7 @@ const seachNews = async (e) => {
   const timer = setTimeout(async () => {
   
     
-      const data = await fetchNews(`/everything?q=${seachValue}`);
+    const data = await fetchNews(`/search?q=${seachValue}&lang=en`);
         setNews(data.articles);
   }, 1000);
   clearTimeout(timer);

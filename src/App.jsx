@@ -23,7 +23,7 @@ const AppContent = () => {
   // Fetch news on component mount or when category/search changes
   useEffect(() => {
     const query = searchQuery || selectedCategory;
-    fetchNews(`/everything?q=${query}&sortBy=publishedAt&language=en`);
+    fetchNews(`/search?q=${query}&lang=en`);
     setCurrentPage(1);
     // fetchNews is stable enough here because it comes from context and will not change while the provider is mounted.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,7 +77,7 @@ const AppContent = () => {
       <div className="min-h-screen">
         <ModernNavbar onCategoryChange={handleCategoryChange} onSearch={handleSearch} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <ErrorState error={error} onRetry={() => fetchNews(`/everything?q=${selectedCategory}`)} />
+          <ErrorState error={error} onRetry={() => fetchNews(`/search?q=${selectedCategory}&lang=en`)} />
         </div>
       </div>
     );
@@ -144,7 +144,7 @@ const AppContent = () => {
                     )}
                   </>
                 ) : (
-                  <EmptyState onRetry={() => fetchNews(`/everything?q=${selectedCategory}`)} />
+                  <EmptyState onRetry={() => fetchNews(`/search?q=${selectedCategory}&lang=en`)} />
                 )}
               </div>
 

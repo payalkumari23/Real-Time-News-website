@@ -13,7 +13,7 @@ const Category = ({ className }) => {
     const category = e.target.value;
     if (!fetchNews || !setNews) return;
 
-    const data = await fetchNews(`/everything?q=${category}`);
+    const data = await fetchNews(`/search?q=${category}&lang=en`);
     if (data?.articles) {
       setNews(data.articles);
     }
